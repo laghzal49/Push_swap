@@ -10,24 +10,21 @@ int	is_sorted(Node *stack)
 	}
 	return (1);
 }
-void	sort_three(Node **a)
+void    sort_three(Node **a)
 {
-	Node *head;
-	int max;
+    Node *head;
 
-	max = head->x;
 	head = *a;
-	if (head->next->x > max)
-		max = head->next->x;
-	if (head->next->next->x > max)
-		max = head->next->next->x;
-	
-	if ((*a)->x == max)
-		ra(a, 1);
-	if ((*a)->next->x == max)
-		raa(a, 1);
-	if ((*a)->x > (*a)->next->x)
-		sa(a, 1);
+    if (is_sorted(*a))
+        return ;
+
+    if (head->x > head->next->x && head->x > head->next->next->x)
+        ra(a, 1);
+    else if (head->next->x > head->x && head->next->x > head->next->next->x)
+        rra(a, 1);
+
+    if ((*a)->x > (*a)->next->x)
+        sa(a, 1);
 }
 static void	move_min_to_top(Node **a)
 {
@@ -70,7 +67,7 @@ static void	sort_five(Node **a, Node **b)
 	while (*b)
 		pa(a, b, 1);
 }
-void    simple_sort(Node **a,Node **b);
+void    simple_sort(Node **a,Node **b)
 {
 	int	size;
 
@@ -78,10 +75,10 @@ void    simple_sort(Node **a,Node **b);
 	if (size == 2)
 	{
 		if ((*a)->x > (*a)->next->x)
-			swap(a, 1);
+			sa(a, 1);
 	}
 	else if (size == 3)
 		sort_three(a);
 	else
-		sort_five(a);
+		sort_five(a, b);
 }
