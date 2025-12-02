@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlaghzal <tlaghzal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 22:07:23 by tlaghzal          #+#    #+#             */
+/*   Updated: 2025/12/02 23:41:49 by tlaghzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h> // malloc, free, exit
-# include <unistd.h> // write
-# include <limits.h> // INT_MAX, INT_MIN (optional, good practice)
-# include <stdbool.h> // bool (optional)
-
+# include <stdlib.h> 
+# include <unistd.h>
+# include <limits.h>
+# include <stdbool.h>
+# include "libft.h"
 typedef struct s_node
 {
-    int             x;          // Value
-    int             index;      // Rank (0, 1, 2...)
+    int             x;
+    int             index;
     struct s_node   *next;
     struct s_node   *prev;
 } Node;

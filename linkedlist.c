@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   linkedlist.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlaghzal <tlaghzal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 22:07:29 by tlaghzal          #+#    #+#             */
+/*   Updated: 2025/12/02 23:42:41 by tlaghzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -130,23 +142,4 @@ void reverse(Node **head)
         cur = next;
     }
     *head = prev;
-}
-
-int main()
-{
-    Node *root;
-
-    root = NULL;
-    push_back(&root, 14);
-    push_back(&root, -2);
-    push_back(&root, 7);
-    push_front(&root, 200);
-    print_list(root);
-    printf("%d\n", lstsize(root));
-     printf("_______________________________________\n");
-     printf("_______________________________________\n");
-     printf("_______________________________________\n");
-    remove_one(&root, 200);
-    printf("%d\n", lstsize(root));
-    ffree(root);
 }

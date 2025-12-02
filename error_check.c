@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_check.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlaghzal <tlaghzal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 22:07:36 by tlaghzal          #+#    #+#             */
+/*   Updated: 2025/12/02 23:36:27 by tlaghzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	free_errors(Node **a, char **args, int spl)
@@ -28,13 +40,24 @@ int	error_syntax(char *str_n)
 
 int	error_duplicate(Node *a, int n)
 {
-	if (!a)
-		return (0);
 	while (a)
 	{
 		if (a->x == n)
 			return (1);
-			a = a->next;
+		a = a->next;
 	}
 	return (0);
+}
+
+void    free_matrix(char **argv)
+{
+	char	**tmp;
+
+	tmp = argv;
+	while (*tmp)
+	{
+		free(*tmp);
+		tmp++;
+	}
+	free(argv);
 }
