@@ -6,13 +6,13 @@
 /*   By: tlaghzal <tlaghzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 22:07:36 by tlaghzal          #+#    #+#             */
-/*   Updated: 2025/12/02 23:36:27 by tlaghzal         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:16:14 by tlaghzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	free_errors(Node **a, char **args, int spl)
+void	free_errors(t_node **a, char **args, int spl)
 {
 	free_stack(a);
 	if (spl)
@@ -38,7 +38,7 @@ int	error_syntax(char *str_n)
 	return (0);
 }
 
-int	error_duplicate(Node *a, int n)
+int	error_duplicate(t_node *a, int n)
 {
 	while (a)
 	{
@@ -49,7 +49,7 @@ int	error_duplicate(Node *a, int n)
 	return (0);
 }
 
-void    free_matrix(char **argv)
+void	free_matrix(char **argv)
 {
 	char	**tmp;
 

@@ -6,17 +6,17 @@
 /*   By: tlaghzal <tlaghzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 22:07:38 by tlaghzal          #+#    #+#             */
-/*   Updated: 2025/12/02 23:30:06 by tlaghzal         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:22:00 by tlaghzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	index_stack(Node *stack)
+void	index_stack(t_node *stack)
 {
-	Node 	*curr;
-	Node 	*check;	
-	int			c;
+	t_node	*curr;
+	t_node	*check;	
+	int		c;
 
 	curr = stack;
 	while (curr)
@@ -34,31 +34,48 @@ void	index_stack(Node *stack)
 	}
 }
 
-void	radix_sort(Node** a, Node** b)
+static int	calculate_max_bits(int size)
 {
-	int	i;
-	int	j;
-	int	size;
 	int	max_bits;
 
-	size = ft_lstsize(*a);
 	max_bits = 0;
 	while (((size - 1) >> max_bits) != 0)
 		max_bits++;
+	return (max_bits);
+}
+
+static void	process_bit(t_node **a, t_node **b, int bit, int size)
+{
+	int	i;
+
 	i = 0;
-	while (i < max_bits)
+	while (i < size)
 	{
-		j = 0;
-		while (j < size)
-		{
-			if (((*a)->index >> i) & 1)
-				 pb(a, b, 1);
-			else
-				ra(a, 1);
-			j++;
-		}
-		while (*b)
-			pa(a, b, 1);
+		if ((((*a)->index >> bit) & 1) == 0)
+			pb(a, b, 1);
+		else
+			ra(a, 1);
 		i++;
+	}
+	while (*b)
+		pa(a, b, 1);
+}
+
+void	radix_sort(t_node **a, t_node **b)
+{
+	int	bit;
+	int	size;
+	int	max_bits;
+
+	if (!a || !*a || is_sorted(*a))
+		return ;
+	index_stack(*a);
+	size = ft_lstsize(*a);
+	max_bits = calculate_max_bits(size);
+	bit = 0;
+	while (bit < max_bits && !is_sorted(*a))
+	{
+		process_bit(a, b, bit, size);
+		bit++;
 	}
 }
