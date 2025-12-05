@@ -6,50 +6,50 @@
 /*   By: tlaghzal <tlaghzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 22:07:32 by tlaghzal          #+#    #+#             */
-/*   Updated: 2025/12/02 23:18:04 by tlaghzal         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:12:29 by tlaghzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 long	ft_atol(const char *str)
 {
-    long    result;
-    int     sign;
-    int     i;
+	long	result;
+	int		sign;
+	int		i;
 
-    result = 0;
-    sign = 1;
-    i = 0;
-    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-        i++;
-    if (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        result = (result * 10) + (str[i] - '0');
-        i++;
-    }
-    return (result * sign);
+	result = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
 
-void	append_node(Node **stack, int n)
+void	append_node(t_node **stack, int n)
 {
-	Node	*node;
-	Node	*last_node;
+	t_node	*node;
+	t_node	*last_node;
 
 	if (!stack)
 		return ;
-	node = malloc(sizeof(Node));
+	node = malloc(sizeof(t_node));
 	if (!node)
 		return ;
 	node->next = NULL;
 	node->x = n;
-    node->index = 0;
+	node->index = 0;
 	if (*stack == NULL)
 	{
 		*stack = node;
@@ -65,10 +65,10 @@ void	append_node(Node **stack, int n)
 	}
 }
 
-void	free_stack(Node **stack)
+void	free_stack(t_node **stack)
 {
-	Node	*tmp;
-	Node	*current;
+	t_node	*tmp;
+	t_node	*current;
 
 	if (!stack || !(*stack))
 		return ;
@@ -82,7 +82,7 @@ void	free_stack(Node **stack)
 	*stack = NULL;
 }
 
-int	ft_lstsize(Node *head)
+int	ft_lstsize(t_node *head)
 {
 	int	i;
 
