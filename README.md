@@ -1,2 +1,1 @@
-# Push_swap
-Tarik
+This project explores the efficient sorting of a stack of numbers utilizing a radix-based algorithm. The core challenge lies in manipulating the stack using a predefined, limited set of operations. By applying the radix sort principle, we aim to achieve optimal performance within these constraints. The implementation demonstrates a sophisticated approach to stack manipulation and sorting. This endeavor highlights the power of algorithmic thinking in solving complex computational problems.
